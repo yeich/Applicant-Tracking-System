@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <title>{% block title %}{% endblock %} | Applicant Tracking System</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('public/_vendor/bootstrap/css/bootstrap-reboot.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/_vendor/bootstrap/css/bootstrap.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
+
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <script src="{{ asset('public/_vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
