@@ -1,0 +1,24 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+form .input-wrapper:not(:last-of-type) {
+  margin-right: 28px;
+}
+form .input-wrapper input {
+  width: 250px !important;
+}
+form button {
+  appearance: none !important;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #707070;
+  margin-top: 28px;
+  width: 100px;
+  padding: 5px 0;
+  text-align: center;
+}
+
+/*# sourceMappingURL=login.css.map */

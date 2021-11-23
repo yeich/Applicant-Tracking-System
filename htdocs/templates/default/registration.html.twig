@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Account creation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('public/css/register.css') }}">
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-12">
+
+            <h1>Account creation</h1>
+
+            <div class="form-wrapper">
+                <form method="post">
+                    <div class="step" data-step="1">
+                        Step 1
+
+                        <button data-nextstep>
+                            Continue
+                        </button>
+                    </div>
+                    <div class="step d-none" data-step="2">
+                        Step 2
+
+                        <button data-nextstep>
+                            Continue
+                        </button>
+                    </div>
+                    <div class="step d-none" data-step="3">
+                        Step 3
+
+                        <button type="submit">
+                            Finish
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        let current_state = 1;
+
+        $('[data-nextstep]').on('click', function (event) {
+
+            event.preventDefault();
+
+            current_state++;
+
+            $('.step').addClass('d-none');
+            $('.step[data-step="' + current_state + '"]').removeClass('d-none');
+        });
+    </script>
+{% endblock %}

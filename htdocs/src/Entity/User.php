@@ -35,6 +35,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pronouns;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $email_public = false;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $phone_public = false;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,5 +157,89 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getPronouns(): ?string
+    {
+        return $this->pronouns;
+    }
+
+    public function setPronouns(?string $pronouns): self
+    {
+        $this->pronouns = $pronouns;
+
+        return $this;
+    }
+
+    public function getEmailPublic(): ?bool
+    {
+        return $this->email_public;
+    }
+
+    public function setEmailPublic(bool $email_public): self
+    {
+        $this->email_public = $email_public;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPhonePublic(): ?bool
+    {
+        return $this->phone_public;
+    }
+
+    public function setPhonePublic(bool $phone_public): self
+    {
+        $this->phone_public = $phone_public;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
     }
 }

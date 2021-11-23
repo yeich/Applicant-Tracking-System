@@ -1,3 +1,5 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +13,8 @@
         <link rel="stylesheet" href="{{ asset('public/_vendor/bootstrap/css/bootstrap-reboot.min.css') }}">
         <link rel="stylesheet" href="{{ asset('public/_vendor/bootstrap/css/bootstrap.min.css') }}">
 
+        <link rel="stylesheet" href="{{ asset('public/_vendor/notiflix/css/notiflix-3.2.2.min.css') }}">
+
         <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
 
         {% block stylesheets %}
@@ -18,9 +22,33 @@
 
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <nav class="navbar">
+
+            {% if is_granted('ROLE_USER') %}
+            {% else %}
+                <div class="navbar-right">
+                    <a href="{% if route_name == 'app_home' %}#{% else %}{{ path('app_home') }}{% endif %}"><img src="{{ asset('public/img/logo.svg') }}" alt="ProfQ Logo" height="38"></a>
+                </div>
+                <div class="navbar-left">
+                    <a href="#" class="pill-button">Register</a>
+                    <a href="{{ path('app_login') }}" class="pill-button">Log in</a>
+                </div>
+            {% endif %}
+        </nav>
+
+        {% block body %}
+        <div class="container" style="margin-top: 50px">
+            {% block container %}
+            {% endblock %}
+        </div>
+        {% endblock %}
 
         <script src="{{ asset('public/_vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('public/_vendor/jquery/jquery-3.6.0.min.js') }}"></script>
+
+        <script src="{{ asset('public/_vendor/notiflix/js/notiflix-notify-aio-3.2.2.min.js') }}"></script>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

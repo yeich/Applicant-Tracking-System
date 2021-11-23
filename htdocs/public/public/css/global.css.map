@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["global.scss"],"names":[],"mappings":"AAAA;AAAA;EAEE","file":"global.css"}
+{"version":3,"sourceRoot":"","sources":["global.scss","_variables.scss"],"names":[],"mappings":"AAEA;AAAA;EAEE;;;AAGF;EACE;EAEA;EAEA;EACA;EACA;;;AAGF;EAEE;EAEA;EAEA;EAEA;EAEA;EAEA;EACA,OC7BK;ED+BL,kBChCM;EDiCN;EAGA;;AAEA;EACE;;AAGF;EACE;EACA","file":"global.css"}

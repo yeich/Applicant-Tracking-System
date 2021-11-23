@@ -1,0 +1,40 @@
+@import '_variables.scss';
+
+.form-wrapper {
+
+  display: flex;
+  justify-content: center;
+
+}
+
+form {
+  .input-wrapper {
+
+    &:not(:last-of-type) {
+      margin-right: 28px;
+    }
+
+    input {
+      width: 250px!important;
+    }
+  }
+
+  button {
+
+    appearance: none!important;
+
+    border: 1px solid $gray;
+    border-radius: 5px;
+
+    background-color: $white;
+
+    color: $gray;
+
+    margin-top: 28px;
+
+    width: 100px;
+    padding: 5px 0;
+
+    text-align: center;
+  }
+}
