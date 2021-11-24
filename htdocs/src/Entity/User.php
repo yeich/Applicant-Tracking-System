@@ -70,6 +70,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $address;
 
+    /**
+     * @ORM\OneToOne(targetEntity=AboutUser::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $aboutUser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -239,6 +244,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getAboutUser(): ?AboutUser
+    {
+        return $this->aboutUser;
+    }
+
+    public function setAboutUser(?AboutUser $aboutUser): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($aboutUser === null && $this->aboutUser !== null) {
+            $this->aboutUser->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($aboutUser !== null && $aboutUser->getUser() !== $this) {
+            $aboutUser->setUser($this);
+        }
+
+        $this->aboutUser = $aboutUser;
 
         return $this;
     }

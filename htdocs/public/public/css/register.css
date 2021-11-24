@@ -1,12 +1,36 @@
+[data-step="3"] > .input-wrapper:not(:last-of-type) {
+  margin-bottom: 28px;
+}
+
 .form-wrapper {
   display: flex;
   justify-content: center;
 }
 
+form .input-row {
+  display: flex;
+}
+form .input-row:not(:last-of-type) {
+  margin-bottom: 28px;
+}
+form .input-checkbox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+form .input-checkbox > input {
+  width: auto !important;
+  margin-right: 10px;
+}
+form .input-checkbox > label {
+  font-size: 12px;
+}
 form .input-wrapper:not(:last-of-type) {
   margin-right: 28px;
 }
-form .input-wrapper input {
+form .input-wrapper input:not([type=checkbox]),
+form .input-wrapper textarea {
   width: 250px !important;
 }
 form button {

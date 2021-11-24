@@ -1,5 +1,9 @@
 @import '_variables.scss';
 
+[data-step="3"] > .input-wrapper:not(:last-of-type) {
+  margin-bottom: 28px;
+}
+
 .form-wrapper {
 
   display: flex;
@@ -8,13 +12,42 @@
 }
 
 form {
+
+  .input-row {
+
+    display: flex;
+
+    &:not(:last-of-type) {
+      margin-bottom: 28px;
+    }
+  }
+
+  .input-checkbox {
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding-top: 20px;
+
+    >input {
+      width: auto!important;
+      margin-right: 10px;
+    }
+
+    >label {
+      font-size: 12px;
+    }
+  }
+
   .input-wrapper {
 
     &:not(:last-of-type) {
       margin-right: 28px;
     }
 
-    input {
+    input:not([type="checkbox"]),
+    textarea {
       width: 250px!important;
     }
   }

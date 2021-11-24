@@ -31,7 +31,7 @@
                     <a href="{% if route_name == 'app_home' %}#{% else %}{{ path('app_home') }}{% endif %}"><img src="{{ asset('public/img/logo.svg') }}" alt="ProfQ Logo" height="38"></a>
                 </div>
                 <div class="navbar-left">
-                    <a href="#" class="pill-button">Register</a>
+                    <a href="{{ path('app_register') }}" class="pill-button">Register</a>
                     <a href="{{ path('app_login') }}" class="pill-button">Log in</a>
                 </div>
             {% endif %}

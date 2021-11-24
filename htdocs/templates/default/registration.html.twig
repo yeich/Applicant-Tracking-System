@@ -15,21 +15,95 @@
             <div class="form-wrapper">
                 <form method="post">
                     <div class="step" data-step="1">
-                        Step 1
+
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label for="inputFirstname">First Name*</label>
+                                <input type="text" name="firstname" id="inputFirstname" class="form-control" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="inputLastname">Last Name*</label>
+                                <input type="text" name="lastname" id="inputLastname" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label for="inputAddress">Address*</label>
+                                <input type="text" name="address" id="inputAddress" class="form-control" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="inputPronouns">Pronouns*</label>
+                                <input type="text" name="pronouns" id="inputPronouns" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label for="inputEmail">E-Mail*</label>
+                                <input type="email" name="email" id="inputEmail" class="form-control" required>
+                            </div>
+                            <div class="input-wrapper input-checkbox">
+                                <input type="checkbox" name="publicEmail" id="checkboxPublicEMail" class="form-check" required>
+                                <label for="checkboxPublicEMail">Public</label>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label for="inputPhone">Phone</label>
+                                <input type="text" name="phone" id="inputPhone" class="form-control" required>
+                            </div>
+                            <div class="input-wrapper input-checkbox">
+                                <input type="checkbox" name="publicPhone" id="checkboxPublicPhone" class="form-check" required>
+                                <label for="checkboxPublicPhone">Public</label>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label for="inputPassword">Password*</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="inputPasswordRepeat">Repeat Password*</label>
+                                <input type="password" name="passwordRepeat" id="inputPasswordRepeat" class="form-control" required>
+                            </div>
+                        </div>
 
                         <button data-nextstep>
                             Continue
                         </button>
                     </div>
                     <div class="step d-none" data-step="2">
-                        Step 2
+
+                        <input type="file" name="cv" id="inputCV" value="Test" required>
 
                         <button data-nextstep>
                             Continue
                         </button>
                     </div>
                     <div class="step d-none" data-step="3">
-                        Step 3
+
+                        <div class="input-wrapper">
+                            <label for="inputCurrentJob">Current Job Title</label>
+                            <input type="text" name="currentJob" id="inputCurrentJob" class="form-control">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="inputCurrentEmployer">Current Employer</label>
+                            <input type="text" name="currentEmployer" id="inputCurrentEmployer" class="form-control">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="inputMotivation">What motivates you?</label>
+                            <textarea maxlength="255" name="motivation" id="inputMotivation" class="form-control"></textarea>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="inputLookingFor">What are you looking for in a Job?</label>
+                            <textarea maxlength="255" name="lookingFor" id="inputLookingFor" class="form-control"></textarea>
+                        </div>
 
                         <button type="submit">
                             Finish
