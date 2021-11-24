@@ -156,6 +156,16 @@
                 }
             }
 
+            if(current_state === 2) {
+                if ($('#inputCV').get(0).files.length === 0) {
+
+                    $('#inputCV').addClass('error');
+
+                    Notiflix.Notify.failure('Please upload your CV.');
+                    return false;
+                }
+            }
+
             current_state++;
 
             $('.step').addClass('d-none');
