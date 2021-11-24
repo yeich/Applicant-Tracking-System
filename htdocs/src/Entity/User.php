@@ -80,8 +80,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $cvFileName;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_activated;
+
     public function __construct() {
         $this->roles = ['ROLE_USER'];
+        $this->is_activated = false;
     }
 
     public function getId(): ?int
@@ -287,6 +293,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCVFileName($cvFileName)
     {
         $this->cvFileName = $cvFileName;
+
+        return $this;
+    }
+
+    public function getIsActivated(): ?bool
+    {
+        return $this->is_activated;
+    }
+
+    public function setIsActivated(bool $is_activated): self
+    {
+        $this->is_activated = $is_activated;
 
         return $this;
     }

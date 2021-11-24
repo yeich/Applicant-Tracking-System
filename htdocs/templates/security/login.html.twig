@@ -9,7 +9,6 @@
 {% block container %}
     <div class="row">
         <div class="col-12">
-
             <h1>Log in</h1>
 
             <div class="form-wrapper">
@@ -38,4 +37,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% if error %}
+        <script>
+            Notiflix.Notify.failure('{{ error.message }}');
+        </script>
+    {% endif %}
 {% endblock %}
