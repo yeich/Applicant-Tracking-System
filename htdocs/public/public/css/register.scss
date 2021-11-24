@@ -4,6 +4,11 @@
   margin-bottom: 28px;
 }
 
+.step {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-wrapper {
 
   display: flex;
@@ -59,6 +64,53 @@ form {
       &.error {
         border-color: $red;
       }
+    }
+  }
+
+  #cv-wrapper {
+
+    display: flex;
+    justify-content: center;
+
+    input {
+      display: none;
+    }
+
+    label {
+      border: 1px solid $gray;
+      color: $gray;
+
+      padding: 10px 15px;
+      border-radius: 5px;
+      
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .drag-and-drop-wrapper {
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    padding: 25px;
+    border: 1px solid $gray;
+
+    margin: 0 auto;
+
+    &.file-uploaded {
+      pointer-events: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+    
+    >span {
+      color: $gray;
+      margin-top: 15px;
     }
   }
 

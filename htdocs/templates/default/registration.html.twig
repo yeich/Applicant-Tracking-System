@@ -77,7 +77,19 @@
                     </div>
                     <div class="step d-none" data-step="2">
 
-                        <input type="file" name="cv" id="inputCV" value="Test" required>
+                        <div class="drag-and-drop-wrapper">
+                            <img src="{{ asset('public/img/icons/pdf.svg') }}" alt="Drag and Drop your CV" width="29">
+                            <span>Drag your PDF here</span>
+                        </div>
+
+                        <div style="margin: 28px 0; text-align: center">
+                            OR
+                        </div>
+
+                        <div class="input-wrapper" id="cv-wrapper">
+                            <label for="inputCV">Upload File</label>
+                            <input type="file" name="cv" id="inputCV" value="Test" required>
+                        </div>
 
                         <button data-nextstep>
                             Continue
@@ -125,6 +137,38 @@
     <script>
 
         let current_state = 1;
+
+        let dropContainer = $('.drag-and-drop-wrapper').get(0);
+
+        dropContainer.ondragover = dropContainer.ondragenter = function (event) {
+            event.preventDefault();
+        };
+
+        dropContainer.ondrop = function (event) {
+
+            $('#inputCV').get(0).files = event.dataTransfer.files;
+
+            event.preventDefault();
+        };
+
+        $('.drag-and-drop-wrapper').on('click', function (event) {
+
+            event.preventDefault();
+
+            $('#inputCV').click();
+        });
+
+        $('#inputCV').on('change', function () {
+
+            let file_name = $('#inputCV').val().split('\\').pop();
+
+            let $wrapper = $('.drag-and-drop-wrapper');
+
+            $wrapper.find('> *').remove();
+
+            $wrapper.append('<span>File uploaded<br/>' + file_name + '</span>');
+            Notiflix.Notify.success('Your CV was successfully uploaded.');
+        });
 
         $('[data-nextstep]').on('click', function (event) {
 

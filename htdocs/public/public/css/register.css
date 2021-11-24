@@ -2,6 +2,11 @@
   margin-bottom: 28px;
 }
 
+.step {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -41,6 +46,41 @@ form .input-wrapper textarea {
 form .input-wrapper input:not([type=checkbox]).error,
 form .input-wrapper textarea.error {
   border-color: #b61919;
+}
+form #cv-wrapper {
+  display: flex;
+  justify-content: center;
+}
+form #cv-wrapper input {
+  display: none;
+}
+form #cv-wrapper label {
+  border: 1px solid #707070;
+  color: #707070;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+form #cv-wrapper label:hover {
+  cursor: pointer;
+}
+form .drag-and-drop-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  padding: 25px;
+  border: 1px solid #707070;
+  margin: 0 auto;
+}
+form .drag-and-drop-wrapper.file-uploaded {
+  pointer-events: none;
+}
+form .drag-and-drop-wrapper:hover {
+  cursor: pointer;
+}
+form .drag-and-drop-wrapper > span {
+  color: #707070;
+  margin-top: 15px;
 }
 form button {
   appearance: none !important;
