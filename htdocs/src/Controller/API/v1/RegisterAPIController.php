@@ -7,9 +7,12 @@ use App\Entity\User;
 use App\Service\FileUploader;
 use Couchbase\Document;
 use PHPUnit\Util\Json;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -21,7 +24,7 @@ class RegisterAPIController extends AbstractController
     /**
      * @Route("/", name="api_v1_register", methods={"POST"}, options={"expose"=true})
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, FileUploader $fileUploader): JsonResponse
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, FileUploader $fileUploader, MailerInterface $mailer): JsonResponse
     {
 
         $json = $request->request->all();
@@ -60,6 +63,14 @@ class RegisterAPIController extends AbstractController
         $user->setAddress($json['address']);
         $user->setPronouns($json['pronouns'] ?: null);
 
+        $hash = bin2hex(random_bytes(32));
+
+        while($em->getRepository('App:User')->findOneBy(['email_hash' => $hash])) {
+            $hash = bin2hex(random_bytes(32));
+        }
+
+        $user->setEmailHash($hash);
+
         $user->setEmail($json['email']);
 //        $user->setEmailPublic($json['emailPublic']);
 
@@ -82,6 +93,26 @@ class RegisterAPIController extends AbstractController
 
         $em->persist($userAbout);
         $em->flush();
+
+
+        //TODO: Send Mail
+        $user->setIsActivated(true);
+        $user->setEmailHash(null);
+
+        $em->persist($user);
+        $em->flush();
+//        $email = (new TemplatedEmail())
+//            ->from('no-reply@ats.profq.eu')
+//            ->to($user->getEmail())
+//            ->subject('Confirmation instructions')
+//            ->htmlTemplate('mail_templates/registration.html.twig')
+//            ->context([
+//                'firstname' => $user->getFirstname(),
+//                'lastname' => $user->getLastname(),
+//                'hash' => $hash
+//            ]);
+//
+//        $mailer->send($email);
 
         return new JsonResponse([
             'error' => false,

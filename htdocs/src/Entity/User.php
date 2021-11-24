@@ -85,6 +85,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $is_activated;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $email_hash;
+
     public function __construct() {
         $this->roles = ['ROLE_USER'];
         $this->is_activated = false;
@@ -305,6 +310,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsActivated(bool $is_activated): self
     {
         $this->is_activated = $is_activated;
+
+        return $this;
+    }
+
+    public function getEmailHash(): ?string
+    {
+        return $this->email_hash;
+    }
+
+    public function setEmailHash(?string $email_hash): self
+    {
+        $this->email_hash = $email_hash;
 
         return $this;
     }
