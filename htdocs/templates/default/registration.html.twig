@@ -110,6 +110,11 @@
                         </button>
                     </div>
                 </form>
+                <div class="sidebar-wrapper">
+                    <div class="dot active" data-dot-state="1"><span>1</span></div>
+                    <div class="dot disabled" data-dot-state="2"><span>2</span></div>
+                    <div class="dot disabled" data-dot-state="3"><span>3</span></div>
+                </div>
             </div>
         </div>
     </div>
@@ -155,6 +160,9 @@
 
             $('.step').addClass('d-none');
             $('.step[data-step="' + current_state + '"]').removeClass('d-none');
+
+            $('.sidebar-wrapper .dot').addClass('disabled');
+            $('.sidebar-wrapper .dot[data-dot-state="' + current_state + '"]').addClass('active').removeClass('disabled');
         });
     </script>
 {% endblock %}
