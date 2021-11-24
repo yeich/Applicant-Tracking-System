@@ -43,10 +43,10 @@
                                 <label for="inputEmail">E-Mail*</label>
                                 <input type="email" name="email" id="inputEmail" class="form-control" required>
                             </div>
-                            <div class="input-wrapper input-checkbox">
-                                <input type="checkbox" name="publicEmail" id="checkboxPublicEMail" class="form-check">
-                                <label for="checkboxPublicEMail">Public</label>
-                            </div>
+{#                            <div class="input-wrapper input-checkbox">#}
+{#                                <input type="checkbox" name="publicEmail" id="checkboxPublicEMail" class="form-check">#}
+{#                                <label for="checkboxPublicEMail">Public</label>#}
+{#                            </div>#}
                         </div>
 
                         <div class="input-row">
@@ -54,10 +54,10 @@
                                 <label for="inputPhone">Phone</label>
                                 <input type="text" name="phone" id="inputPhone" class="form-control">
                             </div>
-                            <div class="input-wrapper input-checkbox">
-                                <input type="checkbox" name="publicPhone" id="checkboxPublicPhone" class="form-check">
-                                <label for="checkboxPublicPhone">Public</label>
-                            </div>
+{#                            <div class="input-wrapper input-checkbox">#}
+{#                                <input type="checkbox" name="publicPhone" id="checkboxPublicPhone" class="form-check">#}
+{#                                <label for="checkboxPublicPhone">Public</label>#}
+{#                            </div>#}
                         </div>
 
                         <div class="input-row">
@@ -88,7 +88,7 @@
 
                         <div class="input-wrapper" id="cv-wrapper">
                             <label for="inputCV">Upload File</label>
-                            <input type="file" name="cv" id="inputCV" value="Test" required>
+                            <input type="file" name="cv" id="inputCV" value="CV File Upload" accept="application/pdf,application/vnd.ms-excel" required>
                         </div>
 
                         <button data-nextstep>
@@ -161,7 +161,6 @@
         $('#inputCV').on('change', function () {
 
             let file_name = $('#inputCV').val().split('\\').pop();
-
             let $wrapper = $('.drag-and-drop-wrapper');
 
             $wrapper.find('> *').remove();
@@ -201,6 +200,9 @@
             }
 
             if(current_state === 2) {
+
+                $('#inputCV').removeClass('error');
+
                 if ($('#inputCV').get(0).files.length === 0) {
 
                     $('#inputCV').addClass('error');
@@ -218,5 +220,33 @@
             $('.sidebar-wrapper .dot').addClass('disabled');
             $('.sidebar-wrapper .dot[data-dot-state="' + current_state + '"]').addClass('active').removeClass('disabled');
         });
+
+        $('form').on('submit', function (event) {
+
+            event.preventDefault();
+
+            $('button[type="submit"]').addClass('disabled').attr('disabled', 'disabled');
+
+            $.ajax({
+                url: Routing.generate('api_v1_register'),
+                method: 'POST',
+                enctype: 'multipart/form-data',
+                responseType: 'json',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: new FormData($('form').get(0)),
+            }).then((response) => {
+
+                if(response.error) {
+
+                    $('button[type="submit"]').removeClass('disabled').removeAttr('disabled');
+                    Notiflix.Notify.failure(response.msg);
+                    return false;
+                }
+
+                Notiflix.Notify.success(response.msg);
+            })
+        })
     </script>
 {% endblock %}

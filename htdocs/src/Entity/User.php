@@ -75,6 +75,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $aboutUser;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $cvFileName;
+
+    public function __construct() {
+        $this->roles = ['ROLE_USER'];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -266,6 +275,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->aboutUser = $aboutUser;
+
+        return $this;
+    }
+
+    public function getCVFileName()
+    {
+        return $this->cvFileName;
+    }
+
+    public function setCVFileName($cvFileName)
+    {
+        $this->cvFileName = $cvFileName;
 
         return $this;
     }
