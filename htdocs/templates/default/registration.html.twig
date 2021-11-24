@@ -33,8 +33,8 @@
                                 <input type="text" name="address" id="inputAddress" class="form-control" required>
                             </div>
                             <div class="input-wrapper">
-                                <label for="inputPronouns">Pronouns*</label>
-                                <input type="text" name="pronouns" id="inputPronouns" class="form-control" required>
+                                <label for="inputPronouns">Pronouns</label>
+                                <input type="text" name="pronouns" id="inputPronouns" class="form-control">
                             </div>
                         </div>
 
@@ -44,7 +44,7 @@
                                 <input type="email" name="email" id="inputEmail" class="form-control" required>
                             </div>
                             <div class="input-wrapper input-checkbox">
-                                <input type="checkbox" name="publicEmail" id="checkboxPublicEMail" class="form-check" required>
+                                <input type="checkbox" name="publicEmail" id="checkboxPublicEMail" class="form-check">
                                 <label for="checkboxPublicEMail">Public</label>
                             </div>
                         </div>
@@ -52,10 +52,10 @@
                         <div class="input-row">
                             <div class="input-wrapper">
                                 <label for="inputPhone">Phone</label>
-                                <input type="text" name="phone" id="inputPhone" class="form-control" required>
+                                <input type="text" name="phone" id="inputPhone" class="form-control">
                             </div>
                             <div class="input-wrapper input-checkbox">
-                                <input type="checkbox" name="publicPhone" id="checkboxPublicPhone" class="form-check" required>
+                                <input type="checkbox" name="publicPhone" id="checkboxPublicPhone" class="form-check">
                                 <label for="checkboxPublicPhone">Public</label>
                             </div>
                         </div>
@@ -124,6 +124,32 @@
         $('[data-nextstep]').on('click', function (event) {
 
             event.preventDefault();
+
+            let fields = $('.step[data-step="' + current_state + '"]').find('input:not([type="file"]):required, textarea:required');
+
+            $.each(fields, (key, element) => {
+
+                $(element).removeClass('error');
+
+                if($(element).val() == '') {
+                    $(element).addClass('error');
+                }
+            });
+
+            if($('.step[data-step="' + current_state + '"]').find('input:required.error, textarea:required.error').length > 0) {
+                Notiflix.Notify.failure('Please fill out all fields.');
+                return false;
+            }
+
+            if(current_state === 1) {
+                if($('#inputPassword').val() !== $('#inputPasswordRepeat').val()) {
+                    Notiflix.Notify.failure('Passwords do not match.');
+
+                    $('input[type="password"]').addClass('error');
+
+                    return false;
+                }
+            }
 
             current_state++;
 

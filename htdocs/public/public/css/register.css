@@ -33,6 +33,10 @@ form .input-wrapper input:not([type=checkbox]),
 form .input-wrapper textarea {
   width: 250px !important;
 }
+form .input-wrapper input:not([type=checkbox]).error,
+form .input-wrapper textarea.error {
+  border-color: #b61919;
+}
 form button {
   appearance: none !important;
   border: 1px solid #707070;
@@ -43,6 +47,13 @@ form button {
   width: 100px;
   padding: 5px 0;
   text-align: center;
+}
+form button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+form button.disabled:hover {
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=register.css.map */

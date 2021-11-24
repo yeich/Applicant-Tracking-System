@@ -49,6 +49,10 @@ form {
     input:not([type="checkbox"]),
     textarea {
       width: 250px!important;
+
+      &.error {
+        border-color: $red;
+      }
     }
   }
 
@@ -69,5 +73,14 @@ form {
     padding: 5px 0;
 
     text-align: center;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: .5;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 }
