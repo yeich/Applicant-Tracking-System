@@ -38,7 +38,7 @@
         </nav>
 
         {% block body %}
-        <div class="container" style="margin-top: 50px">
+        <div class="container" {% if route_name != 'app_home' %}style="margin-top: 50px"{% endif %}>
             {% block container %}
             {% endblock %}
         </div>

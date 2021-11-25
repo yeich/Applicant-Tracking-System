@@ -2,6 +2,41 @@
 
 {% block title %}Home{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('public/css/index.css') }}">
+{% endblock %}
+
 {% block container %}
-    ats.profq.eu
+    <div class="row">
+        <div class="col-3 job-list" style="padding-top: 50px">
+            <h2>Open Jobs</h2>
+
+            <div class="job-entries">
+                <div class="job-offer" data-job-id="XXX">
+                    <div class="job-title">Senior Web Dev</div>
+                    <div class="job-company-name">ProfQ UG (haftungsbeschränkt)</div>
+                    <div class="job-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+                </div>
+                <div class="job-offer" data-job-id="XXX">
+                    <div class="job-title">Senior Web Dev</div>
+                    <div class="job-company-name">ProfQ UG (haftungsbeschränkt)</div>
+                    <div class="job-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+                </div>
+                <div class="job-offer" data-job-id="XXX">
+                    <div class="job-title">Senior Web Dev</div>
+                    <div class="job-company-name">ProfQ UG (haftungsbeschränkt)</div>
+                    <div class="job-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</div>
+                </div>
+            </div>
+        </div>
+        <div class="offset-1 col-8 job-informations" style="padding-top: 50px">
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+    </script>
 {% endblock %}

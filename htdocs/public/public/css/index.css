@@ -1,0 +1,54 @@
+.job-list,
+.job-informations {
+  height: calc(100vh - 54px);
+  position: relative;
+}
+
+.job-list:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #707070;
+  opacity: 0.5;
+}
+.job-list .job-entries {
+  padding-right: 15px;
+}
+.job-list .job-entries .job-offer {
+  padding: 15px;
+  cursor: pointer;
+  border: 1px solid #707070;
+  border-radius: 5px;
+}
+.job-list .job-entries .job-offer:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+.job-list .job-entries .job-offer .job-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.job-list .job-entries .job-offer .job-description {
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.job-informations:not(.job-selected):after {
+  content: "Please select a Job Offer.";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*# sourceMappingURL=index.css.map */
